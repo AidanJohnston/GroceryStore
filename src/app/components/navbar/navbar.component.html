@@ -1,8 +1,15 @@
-<nav class="Nav-Container">
-    <ul class="Nav-List-Container">
-        <li class="Nav-List"><a href="index.html">Home</a></li>
-        <li class="Nav-List"><a href="#">Order Online</a></li>
-        <li class="Nav-List"><a href="#">Contact Us</a></li>
-        <li class="Nav-List"><a href="#">Log In</a></li>
-    </ul>
-</nav>
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <button mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+        <h1>SimpleCRM</h1>
+        <span class="menu-spacer"></span>
+        <div>
+            <a mat-button [routerLink]="'/home'"> Home </a>
+            <a mat-button [routerLink]="'/search'"> Search</a>
+            <a mat-button [routerLink]="'/login'"> Login</a>
+            <a mat-button [routerLink]="'/signup'"> Sign Up</a>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
