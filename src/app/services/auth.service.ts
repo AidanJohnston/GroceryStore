@@ -6,4 +6,25 @@ import { Injectable } from '@angular/core';
 export class AuthService {
 
   constructor() { }
+
+  async createUserWithPassword() { 
+
+  }
+
+  async createUserWithGoogle(){
+    
+  }
+
+  async loginUserWithPassword(){
+
+  }
+
+  async loginUserWithGoogle(){
+
+  }
+
+  async logoutUser(){
+
+  }
+
 }
