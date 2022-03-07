@@ -1,1 +1,55 @@
-<p>signup works!</p>
+<form (ngSubmit)="onSubmit(email.value, password.value)">
+    <h1>Sign Up</h1>
+    <!--
+    <table cellspacing="0">
+        <tr>
+            <td>
+                <mat-form-field>
+                    <input matInput placeholder="First name">
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field>
+                    <input matInput placeholder="Last Name">
+                </mat-form-field>
+            </td>
+        </tr>
+    </table>
+    <mat-form-field>
+        <textarea matInput placeholder="Address"></textarea>
+    </mat-form-field>
+    <table cellspacing="0">
+        <tr>
+            <td>
+                <mat-form-field>
+                    <input matInput placeholder="City">
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field>
+                    <input matInput placeholder="Province">
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field>
+                    <input matInput #postalCode maxlength="6" placeholder="Postal Code">
+                    <mat-hint align="end">{{postalCode.value.length}} / 6</mat-hint>
+                </mat-form-field>
+            </td>
+        </tr>
+    </table>
+-->
+    <mat-form-field>
+        <input required matInput placeholder="email" #email>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input required matInput type="password" placeholder="password" #password>
+    </mat-form-field>
+    <br>
+
+    <button type="submit" mat-raised-button color="primary">Sign Up</button>
+</form>
+<a mat-button [routerLink]="'/'">
+    <mat-icon>chevron_left</mat-icon> Home </a>
+<a mat-button [routerLink]="'/login'">Log in instead</a>
