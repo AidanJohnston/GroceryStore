@@ -1,50 +1,57 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-  .Category-Container{
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.Category-Container {
     list-style: none;
     padding: 5px;
-    display:flex;
+    display: flex;
     align-items: stretch;
     width: 100%;
     align-items: center;
-  }
-  
-  .Category-Container img{
+}
+
+.Category-Container img {
     list-style: none;
     padding: 15px;
     display: flex;
     align-items: stretch;
     justify-content: space-around;
-  }
-  .Category-Heading{
+}
+
+.Category-Heading {
     padding-left: 180px;
     padding-top: 30px;
-  }
-  
-  p{
-  font-size: 20px;
-  font-style: italic;
-  }
-  
-  h1{
+}
+
+p {
+    font-size: 20px;
+    font-style: italic;
+}
+
+h1 {
     align-items: center;
     padding-left: 700;
-  }
-  
-  .Social-Media-Container{
+}
+
+.Social-Media-Container {
     position: fixed;
-    right:0px;
+    right: 0px;
     top: 150px;
-  }
-  
-  .Btn-Container{
+}
+
+.Btn-Container {
     align-items: center;
     padding-top: 10px;
     padding-left: 200;
     border-style: hidden;
-  
-  
-  }
-  
+}
