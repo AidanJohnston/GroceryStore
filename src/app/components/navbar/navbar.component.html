@@ -1,15 +1,10 @@
-<mat-toolbar color="primary">
-    <mat-toolbar-row>
-        <button mat-icon-button>
-      <mat-icon>menu</mat-icon>
-    </button>
-        <h1>SimpleCRM</h1>
-        <span class="menu-spacer"></span>
-        <div>
-            <a mat-button [routerLink]="'/home'"> Home </a>
-            <a mat-button [routerLink]="'/search'"> Search</a>
-            <a mat-button [routerLink]="'/login'"> Login</a>
-            <a mat-button [routerLink]="'/signup'"> Sign Up</a>
-        </div>
-    </mat-toolbar-row>
-</mat-toolbar>
+<h1>Grocery Store</h1>
+<span class="menu-spacer"></span>
+<div>
+    <a mat-button [routerLink]="'/'">Home</a>
+    <a mat-button [routerLink]="'/search'">Search</a>
+    <a mat-button [routerLink]="'/about'">About</a>
+    <a mat-raised-button [routerLink]="'/login'" *ngIf="!isAuthenticated()">Login</a>
+    <a mat-raised-button [routerLink]="'/signup'" *ngIf="!isAuthenticated()">Sign Up</a>
+    <button (click)="onLogoutClick() " mat-raised-button color="accent" *ngIf="isAuthenticated()">Logout</button>
+</div>

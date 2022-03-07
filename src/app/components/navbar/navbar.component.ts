@@ -1,19 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
 
-  constructor() { }
+  constructor(private auth : AuthService) { }
 
-  ngOnInit(): void {
+  isAuthenticated() {
+    return this.auth.isUserLoggedIn;
   }
 
-  toggle(){
-    
+  onLogoutClick(){
+    this.auth.logoutUser();
   }
-
 }
