@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -19,6 +20,7 @@ export class SignupComponent {
 
   isLoading = false;
   isError = false;
+  hide = true;
 
   private passwordStrengths = [
     {
@@ -76,9 +78,9 @@ export class SignupComponent {
     return strength;
   }
 
-  onSubmit(email: string, password: string) {
+  onSubmit(signup : NgForm) {
     this.isLoading = true;
-    this.auth.createUserWithPassword(email, password).then(res => {
+    this.auth.createUserWithPassword(signup.value['email'], signup.value['password']).then(res => {
       if(res) {
         this.isLoading = false;
         this.router.navigate(['verify-email']);
