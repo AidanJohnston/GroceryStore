@@ -10,7 +10,7 @@
     <br>
     <button mat-raised-button color="primary" type="submit">Login</button>
 </form>
-
+<mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
 <a mat-button [routerLink]="'/'">
     <mat-icon>chevron_left</mat-icon>Home </a>
 <a mat-button [routerLink]="'/signup'">No Account? Sign Up</a>

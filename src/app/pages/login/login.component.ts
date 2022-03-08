@@ -9,10 +9,15 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
-  constructor(public authService: AuthService, private router : Router) { }
+  constructor(public authService: AuthService, private router : Router) { } 
+
+  isLoading = false;
 
   onSubmit(email: string, password: string){
+    this.isLoading = true;
     this.authService.loginUserWithPassword(email, password);
-    this.router.navigate([""]);
+    this.isLoading = false;
+    this.router.navigate([''])
+    
   }
 }
