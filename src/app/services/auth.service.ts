@@ -9,20 +9,20 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  userState: any;
+  private userState : any;
 
   constructor(
     public firebaseAuth : AngularFireAuth,
-    public router : Router) { 
-    this.firebaseAuth.authState.subscribe(user => {
-      if (user) {
-        this.userState = user;
-        localStorage.setItem('user', JSON.stringify(this.userState));
-      } else {
-        localStorage.setItem('user', JSON.stringify(null));
-      }
-    })
-  }
+    public router : Router) {
+      this.firebaseAuth.authState.subscribe(user => {
+        if (user) {
+          this.userState = user;
+          localStorage.setItem('user', JSON.stringify(this.userState));
+        } else {
+          localStorage.setItem('user', JSON.stringify(null));
+        }
+      }) 
+    }
 
   createUserWithPassword(email: string, password: string) { 
     this.firebaseAuth.createUserWithEmailAndPassword(email, password)
@@ -35,41 +35,43 @@ export class AuthService {
   }
 
   sendVerificationEmail() {
-    return this.firebaseAuth.currentUser
-      .then(user => {
-        if(user === null){
-          this.router.navigate(['']);
-        }
-        else{
-          user.sendEmailVerification()
-        }
+    if(this.isUserLoggedIn && !this.isUserEmailVerified) {
+      this.firebaseAuth.currentUser
+        .then(user => {
+          user?.sendEmailVerification();
+          this.router.navigate(['verify-email']);
       })
-      .then(() => {
-        this.router.navigate(['verify-email']);
-      })
+    }
   }
 
-  loginUserWithPassword(email: string, password: string){
+  loginUserWithPassword(email: string, password: string) {
     this.firebaseAuth.signInWithEmailAndPassword(email, password)
-      .then(res =>{
-        this.router.navigate(['']);
+      .then(() =>{
+        return;
       })
       .catch(err => {
         console.warn(err.message);
+        return;
       });
   }
 
   logoutUser(){
-    this.firebaseAuth.signOut();
+    this.firebaseAuth.signOut().then(() => {
+      localStorage.removeItem('user');
+      this.router.navigate(['']);
+    });
   }
 
-  get isUserLoggedIn(): boolean {
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
-    return (user !== '{}');
+  get isUserLoggedIn() : boolean {
+    return JSON.parse(localStorage.getItem('user') ?? "null") != null;
   }
 
   get isUserEmailVerified(): boolean {
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
-    return (user.emailVerified);
+    const user = JSON.parse(localStorage.getItem('user') ?? "null");
+
+    if(user != null)
+      return user.emailVerified;
+    else
+      return false;
   }
 }
