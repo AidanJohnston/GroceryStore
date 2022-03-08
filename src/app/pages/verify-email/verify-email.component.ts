@@ -14,9 +14,14 @@ export class VerifyEmailComponent {
     public auth : AuthService,
     public snackBar : MatSnackBar) { }
 
+    
+
   sendVerificationEmail() {
     this.auth.sendVerificationEmail();
     let snackBarRef = this.snackBar.open('Verification Email Resent', 'Close');
   }
 
+  get isVerified() : boolean {
+    return this.auth.isUserEmailVerified;
+  }
 }
