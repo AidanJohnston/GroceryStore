@@ -17,7 +17,7 @@ export class VerifyEmailGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
       if(!this.auth.isUserEmailVerified && this.auth.isUserLoggedIn){
-        this.auth.sendVerificationEmail();
+        this.router.navigate(['verify-email']);
       }
 
     return true;
