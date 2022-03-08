@@ -55,3 +55,22 @@ h1 {
     padding-left: 200;
     border-style: hidden;
 }
+
+.customCard.mat-card {
+    margin: 2em auto;
+    padding: 50px;
+}
+
+mat-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.center-card {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
