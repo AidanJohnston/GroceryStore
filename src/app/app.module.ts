@@ -7,12 +7,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // ANGULAR MATERIAL
-import { MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
-import {MatInputModule} from '@angular/material/input';
-import {MatProgressBarModule} from '@angular/material/progress-bar'; 
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressBarModule } from '@angular/material/progress-bar'; 
 import { FormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar'; 
 
 // FIREBASE
 import { AngularFireModule } from "@angular/fire/compat";
@@ -40,6 +42,7 @@ import { VerifyEmailComponent } from './pages/verify-email/verify-email.componen
 import { VerifyEmailGuard } from './guards/verify-email.guard';
 import { AuthLoggedinGuard } from './guards/auth-loggedin.guard';
 import { AuthNotloggedinGuard } from './guards/auth-notloggedin.guard';
+import { PagenotfoundComponent } from './pages/pagenotfound/pagenotfound.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent , canActivate: [VerifyEmailGuard]},
@@ -48,7 +51,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [AuthLoggedinGuard]},
   { path: 'signup', component: SignupComponent, canActivate: [AuthLoggedinGuard]},
   { path: 'forgot-password', component: ForgotPasswordComponent, canActivate: [AuthNotloggedinGuard]},
-  { path: 'verify-email', component: VerifyEmailComponent, canActivate: [VerifyEmailGuard]}
+  { path: 'verify-email', component: VerifyEmailComponent, canActivate: []},
+  { path: '**', component: PagenotfoundComponent}
 ]
 
 @NgModule({
@@ -61,7 +65,8 @@ const routes: Routes = [
     LoginComponent,
     SearchComponent,
     ForgotPasswordComponent,
-    VerifyEmailComponent
+    VerifyEmailComponent,
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,
@@ -72,6 +77,8 @@ const routes: Routes = [
     MatInputModule,
     MatProgressBarModule,
     MatSnackBarModule,
+    MatCardModule,
+    MatToolbarModule,
     FormsModule,
     RouterModule.forRoot(routes)
   ],
