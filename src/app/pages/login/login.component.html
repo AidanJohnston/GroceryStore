@@ -1,16 +1,28 @@
-<h1>Login</h1>
-<form (ngSubmit)="onSubmit(email.value, password.value)">
-    <mat-form-field>
-        <input required matInput placeholder="email" #email>
-    </mat-form-field>
-    <br>
-    <mat-form-field>
-        <input type="password" required matInput placeholder="password" #password>
-    </mat-form-field>
-    <br>
-    <button mat-raised-button color="primary" type="submit">Login</button>
-</form>
-<mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
-<a mat-button [routerLink]="'/'">
-    <mat-icon>chevron_left</mat-icon>Home </a>
-<a mat-button [routerLink]="'/signup'">No Account? Sign Up</a>
+<div class="center-card">
+    <mat-card class="customCard">
+        <mat-card-title>Login</mat-card-title>
+        <mat-card-content>
+            <form #login="ngForm" (ngSubmit)="onSubmit(login)">
+                <mat-form-field>
+                    <input required matInput placeholder="email" name="email" ngModel>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <input type="password" required matInput placeholder="password" name="password" ngModel>
+                </mat-form-field>
+                <br>
+                <mat-error *ngIf="isError">Email or password is wrong.</mat-error>
+                <button mat-raised-button color="primary" type="submit">Login</button>
+            </form>
+        </mat-card-content>
+
+        <mat-card-actions>
+            <a mat-button [routerLink]="'/'">
+                <mat-icon>chevron_left</mat-icon>Home </a>
+            <a mat-button [routerLink]="'/signup'">No Account? Sign Up</a>
+        </mat-card-actions>
+        <mat-card-footer>
+            <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+        </mat-card-footer>
+    </mat-card>
+</div>
