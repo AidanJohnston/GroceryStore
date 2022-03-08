@@ -1,55 +1,78 @@
-<form (ngSubmit)="onSubmit(email.value, password.value)">
-    <h1>Sign Up</h1>
-    <!--
-    <table cellspacing="0">
-        <tr>
-            <td>
-                <mat-form-field>
-                    <input matInput placeholder="First name">
+<div class="center-card">
+    <mat-card class="customCard">
+        <form (ngSubmit)="onSubmit(email.value, password.value)">
+            <mat-card-title>Sign Up</mat-card-title>
+            <mat-card-content>
+                <table cellspacing="0">
+                    <tr>
+                        <td>
+                            <mat-form-field>
+                                <input matInput placeholder="First name">
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <mat-form-field>
+                                <input matInput placeholder="Last Name">
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                </table>
+                <mat-form-field style="width: 100%;">
+                    <textarea matInput placeholder="Address"></textarea>
                 </mat-form-field>
-            </td>
-            <td>
-                <mat-form-field>
-                    <input matInput placeholder="Last Name">
-                </mat-form-field>
-            </td>
-        </tr>
-    </table>
-    <mat-form-field>
-        <textarea matInput placeholder="Address"></textarea>
-    </mat-form-field>
-    <table cellspacing="0">
-        <tr>
-            <td>
-                <mat-form-field>
-                    <input matInput placeholder="City">
-                </mat-form-field>
-            </td>
-            <td>
-                <mat-form-field>
-                    <input matInput placeholder="Province">
-                </mat-form-field>
-            </td>
-            <td>
-                <mat-form-field>
-                    <input matInput #postalCode maxlength="6" placeholder="Postal Code">
-                    <mat-hint align="end">{{postalCode.value.length}} / 6</mat-hint>
-                </mat-form-field>
-            </td>
-        </tr>
-    </table>
--->
-    <mat-form-field>
-        <input required matInput placeholder="email" #email>
-    </mat-form-field>
-    <br>
-    <mat-form-field>
-        <input required matInput type="password" placeholder="password" #password>
-    </mat-form-field>
-    <br>
+                <table cellspacing="0">
+                    <tr>
+                        <td>
+                            <mat-form-field>
+                                <input matInput placeholder="City">
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <mat-form-field>
+                                <input matInput placeholder="Province">
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <mat-form-field>
+                                <input matInput #postalCode maxlength="6" placeholder="Postal Code">
+                                <mat-hint align="end">{{postalCode.value.length}} / 6</mat-hint>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                </table>
 
-    <button type="submit" mat-raised-button color="primary">Sign Up</button>
-</form>
-<a mat-button [routerLink]="'/'">
-    <mat-icon>chevron_left</mat-icon> Home </a>
-<a mat-button [routerLink]="'/login'">Log in instead</a>
+                <mat-form-field>
+                    <input required matInput placeholder="email" #email>
+                </mat-form-field>
+                <br>
+                <table cellspacing="0">
+                    <tr>
+                        <td>
+                            <mat-form-field>
+                                <input required matInput type="password" placeholder="password" #password (keyup)="onPasswordChange(password.value)">
+                            </mat-form-field>
+                        </td>
+                        <td style="width: 100%;" *ngIf="password.value.length > 0">
+                            <h2>Password Strength</h2>
+                            <mat-progress-bar [value]="value" [color]="color">
+                            </mat-progress-bar>
+                            <p>{{ text }}</p>
+                        </td>
+                    </tr>
+                </table>
+                <br>
+                <mat-error *ngIf="isError">Error creating account. Please Try again.</mat-error>
+                <button type="submit" mat-raised-button color="primary">Sign Up</button>
+            </mat-card-content>
+        </form>
+        <mat-card-actions>
+            <a mat-button [routerLink]="'/'">
+                <mat-icon>chevron_left</mat-icon> Home </a>
+            <a mat-button [routerLink]="'/login'">Log in instead</a>
+        </mat-card-actions>
+        <mat-card-footer>
+            <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+        </mat-card-footer>
+    </mat-card>
+
+</div>
