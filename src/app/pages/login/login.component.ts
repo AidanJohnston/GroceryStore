@@ -14,6 +14,7 @@ export class LoginComponent {
 
   isLoading = false;
   isError = false;
+  hide = true;
 
   onSubmit(login: NgForm){
     this.isLoading = true;

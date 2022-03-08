@@ -2,17 +2,25 @@
     <mat-card class="customCard">
         <mat-card-title>Login</mat-card-title>
         <mat-card-content>
-            <form #login="ngForm" (ngSubmit)="onSubmit(login)">
-                <mat-form-field>
-                    <input required matInput placeholder="email" name="email" ngModel>
+            <form #login="ngForm">
+                <mat-form-field appearance="fill" style="width: 100%;">
+                    <mat-label>Email</mat-label>
+                    <input required matInput name="email" ngModel>
                 </mat-form-field>
                 <br>
-                <mat-form-field>
-                    <input type="password" required matInput placeholder="password" name="password" ngModel>
+                <mat-form-field appearance="fill" style="width: 100%;">
+                    <mat-label>Enter your password</mat-label>
+                    <input matInput required [type]="hide ? 'password' : 'text'" name="password" ngModel>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
                 </mat-form-field>
                 <br>
                 <mat-error *ngIf="isError">Email or password is wrong.</mat-error>
-                <button mat-raised-button color="primary" type="submit">Login</button>
+                <button mat-raised-button color="primary" type="submit" (click)="onSubmit(login)">Login</button>
+                <br>
+                <br>
+                <a [routerLink]="'/forgot-password'">I forgot my password</a>
             </form>
         </mat-card-content>
 
