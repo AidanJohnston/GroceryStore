@@ -1,9 +1,13 @@
 export interface User {
-    address : string,
-    city : string,
+    address : Address,
     email : string,
     fName : string,
     lName : string,
-    postalCode: string,
-    province : string
+}
+
+export interface Address {
+    address_1: string,
+    city : string,
+    province : string,
+    postalCode : string,
 }

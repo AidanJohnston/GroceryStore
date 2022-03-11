@@ -16,7 +16,7 @@ export class AuthService {
 
   constructor(
     public firebaseAuth : AngularFireAuth,
-    public afs : AngularFirestore,
+    private afs : AngularFirestore,
     public router : Router) {
       this.firebaseAuth.authState.subscribe(user => {
         if (user) {
@@ -93,22 +93,27 @@ export class AuthService {
   }
 
   private async updateUserData(uid : string, user : User) : Promise<Boolean> {
-
+    
     const data = {
-      address: user.address,
-      city: user.city,
-      email: user.email,
-      fName: user.fName,
-      lName: user.lName,
-      postalCode: user.postalCode,
-      province: user.province
+      address : {
+        address_1: user.address.address_1,
+        city : user.address.city,
+        province : user.address.province,
+        postalCode : user.address.postalCode
+      },
+      fName : user.fName,
+      lName : user.lName,
+      email : user.email
     }
-    
-    
-    await this.afs.collection("users").doc(uid).set(data, {merge: true})
+
+    console.log(uid, user);
+
+    await this.afs.collection("users").doc(uid).set(data)
       .then(() => {
+        console.log("User created.");
         return true;
-      }).catch(() => {
+      }).catch(err => {
+        console.log(err);
         return false;
       })
 

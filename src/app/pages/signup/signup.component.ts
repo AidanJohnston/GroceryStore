@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { User } from 'src/app/services/user.model';
+import { Address, User } from 'src/app/services/user.model';
 
 @Component({
   selector: 'app-signup',
@@ -82,16 +82,19 @@ export class SignupComponent {
   onSubmit(signup : NgForm) {
     this.isLoading = true;
 
-    const user : User = {
-      address: signup.value['address'],
+    const address : Address = {
+      address_1: signup.value['address'],
       city: signup.value['city'],
+      province: signup.value['province'],
+      postalCode: signup.value['postalCode']
+    }
+
+    const user : User = {
+      address: address,
       email: signup.value['email'],
       fName: signup.value['fname'],
       lName: signup.value['lname'],
-      postalCode: signup.value['postalCode'],
-      province: signup.value['province']
     };
-
 
     this.auth.createUserWithPassword(signup.value['email'], signup.value['password'], user).then(res => {
       if(res) {
