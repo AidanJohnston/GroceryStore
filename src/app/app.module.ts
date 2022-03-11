@@ -50,7 +50,7 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent, canActivate: [VerifyEmailGuard]},
   { path: 'login', component: LoginComponent, canActivate: [AuthLoggedinGuard]},
   { path: 'signup', component: SignupComponent, canActivate: [AuthLoggedinGuard]},
-  { path: 'forgot-password', component: ForgotPasswordComponent, canActivate: [AuthNotloggedinGuard]},
+  { path: 'forgot-password', component: ForgotPasswordComponent, canActivate: []},
   { path: 'verify-email', component: VerifyEmailComponent, canActivate: []},
   { path: '**', component: PagenotfoundComponent}
 ]

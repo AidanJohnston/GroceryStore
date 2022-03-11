@@ -40,7 +40,7 @@
                         <td>
                             <mat-form-field appearance="fill">
                                 <mat-label>Postal Code</mat-label>
-                                <input matInput #postalCode name="postalCode" maxlength="6">
+                                <input matInput #postalCode name="postalCode" maxlength="6" ngModel>
                                 <mat-hint align="end">{{postalCode.value.length}} / 6</mat-hint>
                             </mat-form-field>
                         </td>
@@ -49,7 +49,7 @@
 
                 <mat-form-field appearance="fill">
                     <mat-label>Email</mat-label>
-                    <input required matInput>
+                    <input required matInput name="email" ngModel>
                 </mat-form-field>
                 <br>
                 <table cellspacing="0">

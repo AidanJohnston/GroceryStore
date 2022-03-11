@@ -21,7 +21,14 @@ export class LoginComponent {
     this.authService.loginUserWithPassword(login.value['email'], login.value['password']).then(res => {
       if(res){
         this.isLoading = false;
-        this.router.navigate([''])
+
+        if(this.authService.isUserEmailVerified){
+          this.router.navigate(['']);
+        }
+        else {
+          this.router.navigate(['verify-email']);
+        }
+        
       }
       else{
         this.isError = true;

@@ -1,7 +1,9 @@
 import { Injectable, NgZone } from '@angular/core';
 
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
+import { User } from './user.model';
 
 
 @Injectable({
@@ -14,6 +16,7 @@ export class AuthService {
 
   constructor(
     public firebaseAuth : AngularFireAuth,
+    public afs : AngularFirestore,
     public router : Router) {
       this.firebaseAuth.authState.subscribe(user => {
         if (user) {
@@ -25,14 +28,22 @@ export class AuthService {
       }) 
     }
 
-  async createUserWithPassword(email: string, password: string) : Promise<boolean>{ 
+  async createUserWithPassword(email: string, password: string, user : User) : Promise<boolean>{ 
 
     var success = false;
 
     await this.firebaseAuth.createUserWithEmailAndPassword(email, password)
       .then(res => {
-        this.sendVerificationEmail()
-        success = true;
+
+        if(res.user != null){
+          this.updateUserData(res.user.uid, user)
+          this.sendVerificationEmail()
+          success = true;
+        }
+        else{
+          success = false;
+        }
+        
       })
       .catch(err => {
         success = false;
@@ -79,5 +90,28 @@ export class AuthService {
       return user.emailVerified;
     else
       return false;
+  }
+
+  private async updateUserData(uid : string, user : User) : Promise<Boolean> {
+
+    const data = {
+      address: user.address,
+      city: user.city,
+      email: user.email,
+      fName: user.fName,
+      lName: user.lName,
+      postalCode: user.postalCode,
+      province: user.province
+    }
+    
+    
+    await this.afs.collection("users").doc(uid).set(data, {merge: true})
+      .then(() => {
+        return true;
+      }).catch(() => {
+        return false;
+      })
+
+    return false;
   }
 }

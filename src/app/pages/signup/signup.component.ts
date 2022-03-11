@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { User } from 'src/app/services/user.model';
 
 @Component({
   selector: 'app-signup',
@@ -80,7 +81,19 @@ export class SignupComponent {
 
   onSubmit(signup : NgForm) {
     this.isLoading = true;
-    this.auth.createUserWithPassword(signup.value['email'], signup.value['password']).then(res => {
+
+    const user : User = {
+      address: signup.value['address'],
+      city: signup.value['city'],
+      email: signup.value['email'],
+      fName: signup.value['fname'],
+      lName: signup.value['lname'],
+      postalCode: signup.value['postalCode'],
+      province: signup.value['province']
+    };
+
+
+    this.auth.createUserWithPassword(signup.value['email'], signup.value['password'], user).then(res => {
       if(res) {
         this.isLoading = false;
         this.router.navigate(['verify-email']);
@@ -90,6 +103,5 @@ export class SignupComponent {
         this.isError = true;
       }
     });
-    
   }
 }
