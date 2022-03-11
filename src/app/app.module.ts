@@ -1,6 +1,6 @@
-// ENVIROMENT
-import { environment } from 'src/environments/environment';
 
+
+// ANGULAR
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
@@ -18,10 +18,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 
 // FIREBASE
 import { AngularFireModule } from "@angular/fire/compat";
-import { AngularFireAuthModule } from "@angular/fire/compat/auth";
-import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { environment } from 'src/environments/environment';
 
 // SERVICES
 import { AuthService } from './services/auth.service';
@@ -43,6 +41,7 @@ import { VerifyEmailGuard } from './guards/verify-email.guard';
 import { AuthLoggedinGuard } from './guards/auth-loggedin.guard';
 import { AuthNotloggedinGuard } from './guards/auth-notloggedin.guard';
 import { PagenotfoundComponent } from './pages/pagenotfound/pagenotfound.component';
+import { ItemComponent } from './pages/item/item.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent , canActivate: [VerifyEmailGuard]},
@@ -66,11 +65,13 @@ const routes: Routes = [
     SearchComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    ItemComponent
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatIconModule,
