@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-item',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ItemComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private afs : AngularFirestore,
+    private router : Router,
+    private route : ActivatedRoute) { }
+
+    title : string = "";
 
   ngOnInit(): void {
+
+    this.title = this.route.snapshot.url[0].path;
+
+    //doc : AngularFirestoreCollection =  this.afs.collection('items', ref => ref.where('name', '==', this.route.snapshot.url[0].path));
+
   }
 
 }
