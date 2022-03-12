@@ -18,6 +18,10 @@ export class ItemComponent implements OnInit {
 
   ngOnInit(): void {
 
+    if(this.route.snapshot.url[0] == null){
+      this.router.navigate(['404']);
+    }
+
     this.title = this.route.snapshot.url[0].path;
 
     //doc : AngularFirestoreCollection =  this.afs.collection('items', ref => ref.where('name', '==', this.route.snapshot.url[0].path));

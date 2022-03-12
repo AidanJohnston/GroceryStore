@@ -85,8 +85,12 @@ const routes: Routes = [
       }
     ]
   },
+  { path: '404', 
+    component: PagenotfoundComponent
+  },
   { path: '**', 
-    component: PagenotfoundComponent}
+    component: PagenotfoundComponent
+  }
 ]
 
 @NgModule({
