@@ -9,5 +9,5 @@ export class FooterComponent{
 
   constructor() { }
 
-  year: Number = new Date().getFullYear();
+  year : Number = new Date().getFullYear();
 }

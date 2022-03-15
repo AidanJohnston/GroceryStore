@@ -3,13 +3,18 @@
 }
 
 #footer {
-    position: absolute;
     display: inline-flex;
     bottom: 0;
     width: 100%;
     height: 5rem;
     text-align: center;
-    /* Footer height */
+}
+
+@media screen and (max-width: 500) {
+    #footer {
+        display: block;
+        font-size: 1em;
+    }
 }
 
 a {
