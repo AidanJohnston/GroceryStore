@@ -1,3 +1,39 @@
 .spacer {
     flex: 1 1 auto;
 }
+
+h1 {
+    font-size: 2em;
+    margin-right: 10px;
+}
+
+.mat-toolbar {
+    height: 7vh;
+}
+
+.mobileDoNotShow {
+    display: inherit;
+}
+
+.mobileShow {
+    display: none;
+}
+
+@media screen and (max-width: 650px) {
+    .mobileDoNotShow {
+        display: none;
+    }
+    .mobileShow {
+        display: inherit;
+    }
+}
+
+.bottom-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+mat-sidenav {
+    width: 200px;
+}

@@ -15,6 +15,8 @@ import { FormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar'; 
+import { MatSidenavModule } from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
 
 // FIREBASE
 import { AngularFireModule } from "@angular/fire/compat";
@@ -47,17 +49,34 @@ import { PagenotfoundComponent } from './pages/pagenotfound/pagenotfound.compone
 
 const routes: Routes = [
   { 
-    path: '', 
-    component: HomeComponent , 
-    canActivate: [VerifyEmailGuard]
-  },
-  { path: 'search', 
-    component: SearchComponent, 
-    canActivate: [VerifyEmailGuard] 
-  },
-  { path: 'about', 
-    component: AboutComponent, 
-    canActivate: [VerifyEmailGuard]
+    path: '',
+    component: NavbarComponent, 
+    children: [
+      {
+        path: '',
+        component: HomeComponent,
+        canActivate: [VerifyEmailGuard],
+      },
+      { 
+        path: 'search', 
+        component: SearchComponent, 
+        canActivate: [VerifyEmailGuard] 
+      },
+      { path: 'about', 
+      component: AboutComponent, 
+      canActivate: [VerifyEmailGuard]
+      },
+
+      { 
+        path: 'item', 
+        children:[
+        {
+          path: '**', 
+          component: ItemComponent
+        }
+      ]
+    },
+  ]
   },
   { 
     path: 'login', 
@@ -76,14 +95,6 @@ const routes: Routes = [
   { path: 'verify-email', 
     component: VerifyEmailComponent, 
     canActivate: []
-  },
-  { path: 'item', 
-    children:[
-      {
-        path: '**', 
-        component: ItemComponent
-      }
-    ]
   },
   { path: '404', 
     component: PagenotfoundComponent
@@ -106,7 +117,7 @@ const routes: Routes = [
     ForgotPasswordComponent,
     VerifyEmailComponent,
     PagenotfoundComponent,
-    ItemComponent
+    ItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -120,6 +131,8 @@ const routes: Routes = [
     MatSnackBarModule,
     MatCardModule,
     MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
     FormsModule,
     RouterModule.forRoot(routes)
   ],
