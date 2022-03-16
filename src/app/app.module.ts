@@ -39,12 +39,12 @@ import { SearchComponent } from './pages/search/search.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './pages/verify-email/verify-email.component';
 import { ItemComponent } from './pages/item/item.component';
+import { PagenotfoundComponent } from './pages/pagenotfound/pagenotfound.component';
 
 // GUARDS
 import { VerifyEmailGuard } from './guards/verify-email.guard';
 import { AuthLoggedinGuard } from './guards/auth-loggedin.guard';
 import { AuthNotloggedinGuard } from './guards/auth-notloggedin.guard';
-import { PagenotfoundComponent } from './pages/pagenotfound/pagenotfound.component';
 
 
 const routes: Routes = [
@@ -70,13 +70,13 @@ const routes: Routes = [
       { 
         path: 'item', 
         children:[
-        {
-          path: '**', 
-          component: ItemComponent
-        }
-      ]
-    },
-  ]
+          {
+            path: '**', 
+            component: ItemComponent
+          }
+        ]
+      },
+    ]
   },
   { 
     path: 'login', 
