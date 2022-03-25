@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ItemsService } from 'src/app/services/items.service';
 
 @Component({
   selector: 'app-item',
@@ -12,9 +13,13 @@ export class ItemComponent implements OnInit {
   constructor(
     private afs : AngularFirestore,
     private router : Router,
-    private route : ActivatedRoute) { }
+    private route : ActivatedRoute,
+    private itemService : ItemsService) { }
 
-    title : string = "";
+    name : string = "";
+    discription : string = "";
+    photo_ref : string = "";
+    price : number = 0;
 
   ngOnInit(): void {
 
@@ -22,10 +27,13 @@ export class ItemComponent implements OnInit {
       this.router.navigate(['404']);
     }
 
-    this.title = this.route.snapshot.url[0].path;
-
-    //doc : AngularFirestoreCollection =  this.afs.collection('items', ref => ref.where('name', '==', this.route.snapshot.url[0].path));
-
+    this.itemService.getItem(this.route.snapshot.queryParamMap.get('id') || '').then(item => {
+      if(item != null) {
+        this.name = item.name;
+        this.discription = item.discription;
+        this.photo_ref = item.photo_ref;
+        this.price = item.price;
+      }
+    });
   }
-
 }

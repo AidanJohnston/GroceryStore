@@ -1,0 +1,18 @@
+.item-Container {
+    display: flex;
+    flex-wrap: wrap;
+    height: 500px;
+    overflow: hidden;
+    flex-direction: column;
+}
+
+.itemImage {
+    flex: 0 1 60%;
+    width: 100%;
+    height: auto;
+    vertical-align: bottom;
+}
+
+.itemcontent {
+    flex: 0 0 auto;
+}
