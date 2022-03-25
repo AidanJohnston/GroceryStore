@@ -69,12 +69,7 @@ const routes: Routes = [
 
       { 
         path: 'item', 
-        children:[
-          {
-            path: '**', 
-            component: ItemComponent
-          }
-        ]
+        component: ItemComponent
       },
     ]
   },
