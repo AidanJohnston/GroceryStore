@@ -17,6 +17,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar'; 
 import { MatSidenavModule } from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
+import {MatTabsModule} from '@angular/material/tabs';
 
 // FIREBASE
 import { AngularFireModule } from "@angular/fire/compat";
@@ -40,11 +41,13 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
 import { VerifyEmailComponent } from './pages/verify-email/verify-email.component';
 import { ItemComponent } from './pages/item/item.component';
 import { PagenotfoundComponent } from './pages/pagenotfound/pagenotfound.component';
+import { AccountComponent } from './pages/account/account.component';
 
 // GUARDS
 import { VerifyEmailGuard } from './guards/verify-email.guard';
 import { AuthLoggedinGuard } from './guards/auth-loggedin.guard';
 import { AuthNotloggedinGuard } from './guards/auth-notloggedin.guard';
+
 
 
 const routes: Routes = [
@@ -71,6 +74,10 @@ const routes: Routes = [
         path: 'item', 
         component: ItemComponent
       },
+      {
+        path: 'account',
+        component: AccountComponent,
+      }
     ]
   },
   { 
@@ -113,6 +120,7 @@ const routes: Routes = [
     VerifyEmailComponent,
     PagenotfoundComponent,
     ItemComponent,
+    AccountComponent,
   ],
   imports: [
     BrowserModule,
@@ -128,6 +136,7 @@ const routes: Routes = [
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
+    MatTabsModule,
     FormsModule,
     RouterModule.forRoot(routes)
   ],
