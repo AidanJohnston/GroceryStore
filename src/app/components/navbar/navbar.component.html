@@ -21,7 +21,7 @@
             <button (click)="onLogoutClick()" mat-raised-button color="accent" *ngIf="isAuthenticated()">Logout</button>
         </div>
     </mat-sidenav>
-    <mat-sidenav-content class="page-wrap">
+    <mat-sidenav-content class="page">
         <mat-toolbar class="mat-toolbar">
             <div fxShow="true" fxHide.gt-sm="true" class="mobileShow">
                 <button mat-icon-button (click)="sidenav.toggle()">
@@ -47,6 +47,8 @@
         <div class="content">
             <router-outlet></router-outlet>
         </div>
+
         <app-footer></app-footer>
+
     </mat-sidenav-content>
 </mat-sidenav-container>

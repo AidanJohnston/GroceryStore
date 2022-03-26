@@ -23,9 +23,10 @@ export class ItemComponent implements OnInit {
 
   ngOnInit(): void {
 
+    /*
     if(this.route.snapshot.url[0] == null){
       this.router.navigate(['404']);
-    }
+    }*/
 
     this.itemService.getItem(this.route.snapshot.queryParamMap.get('id') || '').then(item => {
       if(item != null) {

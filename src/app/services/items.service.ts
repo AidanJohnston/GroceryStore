@@ -26,9 +26,10 @@ export class ItemsService {
           const data = JSON.parse(localStorage.getItem('items')|| '{}');
           item = data[id]
 
+          /*
           if(item == null) {
             this.router.navigate(['404']);
-          }
+          }*/
         })
     }
     return item;

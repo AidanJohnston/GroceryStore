@@ -84,13 +84,6 @@ mat-card-content {
     /* Footer height */
 }
 
-.content {
-    margin: 0 10%;
-    padding: 5%;
-    flex: 1;
-    height: 100vh;
-}
-
 .page-wrap {
     display: flex;
     flex-direction: column;
