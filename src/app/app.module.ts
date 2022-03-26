@@ -47,6 +47,7 @@ import { AccountComponent } from './pages/account/account.component';
 import { VerifyEmailGuard } from './guards/verify-email.guard';
 import { AuthLoggedinGuard } from './guards/auth-loggedin.guard';
 import { AuthNotloggedinGuard } from './guards/auth-notloggedin.guard';
+import { TransactionsComponent } from './components/transactions/transactions.component';
 
 
 
@@ -121,6 +122,7 @@ const routes: Routes = [
     PagenotfoundComponent,
     ItemComponent,
     AccountComponent,
+    TransactionsComponent,
   ],
   imports: [
     BrowserModule,
