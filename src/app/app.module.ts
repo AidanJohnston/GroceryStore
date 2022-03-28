@@ -19,6 +19,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatTableModule} from '@angular/material/table';
 
 // FIREBASE
 import { AngularFireModule } from "@angular/fire/compat";
@@ -155,6 +156,7 @@ const routes: Routes = [
     MatListModule,
     MatTabsModule,
     MatExpansionModule,
+    MatTableModule,
     FormsModule,
     RouterModule.forRoot(routes)
   ],

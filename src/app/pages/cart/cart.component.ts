@@ -9,6 +9,7 @@ import { CartItem } from '../../models/cartItem.model';
 })
 export class CartComponent implements OnInit {
   cart!:Cart;
+  
   constructor(private cartService: CartService,
     ) { 
     this.setCart();
@@ -29,6 +30,10 @@ export class CartComponent implements OnInit {
 
   setCart(){
     this.cart = this.cartService.getCart();
+  }
+
+  checkout(){
+    
   }
 
 }
