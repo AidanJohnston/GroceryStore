@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from '../../services/cart/cart.service';
-import { Cart } from '../../models/Cart';
-import { CartItem } from '../../models/CartItem';
+import { CartService } from '../../services/cart.service';
+import { Cart } from '../../models/cart.model';
+import { CartItem } from '../../models/cartItem.model';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartPageComponent implements OnInit {
+export class CartComponent implements OnInit {
   cart!:Cart;
   constructor(private cartService: CartService) { 
     this.setCart();
