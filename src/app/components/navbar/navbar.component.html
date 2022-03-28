@@ -14,7 +14,9 @@
         <span class="spacer"></span>
         <div>
             <a mat-button [routerLink]="'/login'" *ngIf="!isAuthenticated()">Login</a>
-            <a mat-button [routerLink]="'/cart'" *ngIf="isAuthenticated()">Cart</a>
+            <a mat-button [routerLink]="'/cart'" *ngIf="isAuthenticated()"><span class="material-icons">
+                shopping_cart
+                </span></a>
             <a mat-raised-button color="accent" [routerLink]="'/signup'" *ngIf="!isAuthenticated()">Sign Up</a>
             <a mat-button [routerLink]="'/account'" *ngIf="isAuthenticated()"><span class="material-icons">
             account_circle
@@ -38,7 +40,9 @@
             <span class="spacer"></span>
             <div class="mobileDoNotShow">
                 <a mat-button [routerLink]="'/login'" *ngIf="!isAuthenticated()">Login</a>
-                <a mat-button [routerLink]="'/cart'" *ngIf="isAuthenticated()">Cart</a>
+                <a mat-button [routerLink]="'/cart'" *ngIf="isAuthenticated()"><span class="material-icons">
+                    shopping_cart
+                    </span></a>
                 <a mat-raised-button color="accent" [routerLink]="'/signup'" *ngIf="!isAuthenticated()">Sign Up</a>
                 <a mat-button [routerLink]="'/account'" *ngIf="isAuthenticated()"><span class="material-icons">
                     account_circle
