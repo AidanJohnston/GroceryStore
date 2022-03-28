@@ -18,6 +18,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 // FIREBASE
 import { AngularFireModule } from "@angular/fire/compat";
@@ -78,6 +79,7 @@ const routes: Routes = [
       {
         path: 'account',
         component: AccountComponent,
+        canActivate: [AuthNotloggedinGuard]
       }
     ]
   },
@@ -139,6 +141,7 @@ const routes: Routes = [
     MatSidenavModule,
     MatListModule,
     MatTabsModule,
+    MatExpansionModule,
     FormsModule,
     RouterModule.forRoot(routes)
   ],
