@@ -43,12 +43,14 @@ import { VerifyEmailComponent } from './pages/verify-email/verify-email.componen
 import { ItemComponent } from './pages/item/item.component';
 import { PagenotfoundComponent } from './pages/pagenotfound/pagenotfound.component';
 import { AccountComponent } from './pages/account/account.component';
+import { TransactionsComponent } from './components/transactions/transactions.component';
+import { CartComponent } from './pages/cart/cart.component';
 
 // GUARDS
 import { VerifyEmailGuard } from './guards/verify-email.guard';
 import { AuthLoggedinGuard } from './guards/auth-loggedin.guard';
 import { AuthNotloggedinGuard } from './guards/auth-notloggedin.guard';
-import { TransactionsComponent } from './components/transactions/transactions.component';
+
 
 
 
@@ -101,6 +103,11 @@ const routes: Routes = [
     component: VerifyEmailComponent, 
     canActivate: []
   },
+  {
+    path: 'cart',
+    component: CartComponent,
+    canActivate: [AuthNotloggedinGuard]
+  },
   { path: '404', 
     component: PagenotfoundComponent
   },
@@ -125,6 +132,7 @@ const routes: Routes = [
     ItemComponent,
     AccountComponent,
     TransactionsComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
