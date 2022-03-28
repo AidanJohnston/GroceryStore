@@ -30,6 +30,14 @@ a.Nav-Container:link {
     align-items: stretch;
     width: 100%;
     align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 3rem;
+}
+
+.Category-Container{
+    min-width:30rem;
+    max-width:40rem;
 }
 
 .Category-Container img {
@@ -39,6 +47,7 @@ a.Nav-Container:link {
     align-items: stretch;
     justify-content: space-around;
 }
+
 
 .Category-Heading {
     padding-left: 180px;
