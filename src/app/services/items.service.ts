@@ -35,7 +35,7 @@ export class ItemsService {
     return item;
   }
 
-  private async updateDB() : Promise<boolean> {
+  public async updateDB() : Promise<boolean> {
 
     let documents : { [key: string]: any } = {}
 
