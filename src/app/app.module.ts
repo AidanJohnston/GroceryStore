@@ -82,6 +82,11 @@ const routes: Routes = [
         path: 'account',
         component: AccountComponent,
         canActivate: [AuthNotloggedinGuard]
+      },
+      {
+        path: 'cart',
+        component: CartComponent,
+        canActivate: [AuthNotloggedinGuard]
       }
     ]
   },
@@ -103,16 +108,16 @@ const routes: Routes = [
     component: VerifyEmailComponent, 
     canActivate: []
   },
-  {
-    path: 'cart',
-    component: CartComponent,
-    canActivate: [AuthNotloggedinGuard]
-  },
   { path: '404', 
     component: PagenotfoundComponent
   },
   { path: '**', 
     component: PagenotfoundComponent
+  },
+  {
+    path: 'cart',
+    component: CartComponent,
+    canActivate: [AuthNotloggedinGuard]
   }
 ]
 

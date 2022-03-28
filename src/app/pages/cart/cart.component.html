@@ -1,8 +1,8 @@
-<div *ngIf="cart && cart.items.length >0" class="container">
+<div *ngIf="cart && cart.items.length > 0" class="container">
     <ul>
         <li *ngFor="let cartItem of cart.items">
             <div>
-                <img [src]="cartItem.food.imageUrl" [alt]="cartItem.food.name">
+                <img [src]="cartItem.item.photo_ref" [alt]="cartItem.item.name">
             </div>
 
             <div>
@@ -33,5 +33,4 @@
             <div class="total-price">{{cart.totalPrice}}</div>
         </div>
     </div>
-
 </div>
