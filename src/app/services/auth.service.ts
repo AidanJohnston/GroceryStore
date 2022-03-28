@@ -11,7 +11,7 @@ import { User } from '../models/user.model';
 })
 export class AuthService {
 
-  private userState : any;
+  public userState : any;
   private success : boolean = false;
 
   constructor(
@@ -118,5 +118,10 @@ export class AuthService {
       })
 
     return false;
+  }
+
+  getUser() : User {
+    const user = JSON.parse(localStorage.getItem('user') ?? "null");
+    return user;
   }
 }
