@@ -1,4 +1,4 @@
-import { CartItem } from "./CartItem";
+import { CartItem } from "./cartItem.model";
 
 export class Cart{
     items:CartItem[] = [];

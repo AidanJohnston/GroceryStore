@@ -23,7 +23,7 @@ export class ItemsService {
     if(item == null){
       this.updateDB()
         .then(res => {
-          const data = JSON.parse(localStorage.getItem('items')|| '{}');
+          const data = JSON.parse(localStorage.getItem('items') || '{}');
           item = data[id]
 
           /*

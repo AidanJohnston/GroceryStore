@@ -3,4 +3,5 @@ export interface Item {
     discription : string,
     photo_ref : string,
     price : number
+    tags : string[]
 }
