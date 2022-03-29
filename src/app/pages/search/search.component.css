@@ -34,3 +34,14 @@ div button:hover {
     opacity: 1;
     cursor: pointer;
 }
+.example-card {
+    max-width: 300px;
+    min-width:300px;
+    display:flex;
+    flex-wrap: wrap-reverse;
+  }
+  
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
