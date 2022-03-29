@@ -55,4 +55,8 @@ export class CartService {
   getCartItems():CartItem[]{
     return this.items;
   }
+
+  emptyCart(): void{
+    this.items = [];
+  }
 }

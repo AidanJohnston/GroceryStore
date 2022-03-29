@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { CartItem } from '../../models/cartItem.model';
 import { NgForm } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AuthService } from 'src/app/services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatTable } from '@angular/material/table';
 
 @Component({
   selector: 'app-cart',
@@ -13,14 +14,15 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class CartComponent implements OnInit {
 
+
   constructor(
     private cartService: CartService,
     private afs : AngularFirestore,
     private authService : AuthService,
     public snackBar : MatSnackBar) { }
 
-  cartItems = this.cartService.getCartItems();
   total = this.cartService.totalPrice;
+  cartItems = this.cartService.getCartItems();
   isLoading : boolean = false;
   isError : boolean = false;
   isSuccess: boolean = false;
@@ -34,8 +36,6 @@ export class CartComponent implements OnInit {
   removeFromCart(cartItem:CartItem){
     this.cartService.removeFromCart(cartItem.item, cartItem.id);
     this.setCart();
-
-    console.log(this.cartItems);
   }
 
   addToCart(cartItem:CartItem){
@@ -66,6 +66,7 @@ export class CartComponent implements OnInit {
         this.isError = false;
         this.isLoading = false;
         this.isSuccess = true;
+        this.cartService.emptyCart();
         this.snackBar.open('Transaction Submitted', 'Close', {
           duration: 2000,
         });
