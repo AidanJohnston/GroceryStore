@@ -23,17 +23,23 @@ export class CartComponent implements OnInit {
   total = this.cartService.totalPrice;
   isLoading : boolean = false;
   isError : boolean = false;
+  isSuccess: boolean = false;
 
   displayedColumns = ['name', 'price', 'quantity', 'subtotal', 'remove'];
 
   ngOnInit(): void {
 
-    console.log(this.cartItems);
-
   }
 
   removeFromCart(cartItem:CartItem){
     this.cartService.removeFromCart(cartItem.item, cartItem.id);
+    this.setCart();
+
+    console.log(this.cartItems);
+  }
+
+  addToCart(cartItem:CartItem){
+    this.cartService.increaseCart(cartItem.item, cartItem.id);
     this.setCart();
   }
 
@@ -59,7 +65,7 @@ export class CartComponent implements OnInit {
     this.afs.collection('users').doc(this.authService.getUser().uid).collection('transactions').add(data).then(res => {
         this.isError = false;
         this.isLoading = false;
-  
+        this.isSuccess = true;
         this.snackBar.open('Transaction Submitted', 'Close', {
           duration: 2000,
         });
