@@ -19,10 +19,11 @@ export class CartService {
         return totalPrice;
     }
 
-  getItemQuantity(item: Item): number {
-    let cartItem = this.items.find(value => value.item.name === item.name);
+  async getItemQuantity(item: Item, id : string): Promise<number> {
+    let cartItem = this.items.find(value => value.id === id);
 
     if(cartItem){
+      console.log(cartItem.quantity);
       return cartItem.quantity;
     }
     else{

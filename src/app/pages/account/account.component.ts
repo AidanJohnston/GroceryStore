@@ -98,6 +98,7 @@ export class AccountComponent implements OnInit {
   }
 
   public toDate(time: number) : string {
-    return new Date(time).toLocaleDateString('en-US', );
+     return new Date(time).toLocaleDateString('en-GB',)+" "+new Date(time).toLocaleTimeString('en-GB', )
+    
   }
 }

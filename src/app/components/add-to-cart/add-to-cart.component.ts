@@ -33,7 +33,11 @@ export class AddToCartComponent implements OnInit {
        }
     });
 
-    this.quantity = this.cartService.getItemQuantity(this.item);
+    this.cartService.getItemQuantity(this.item, this.id).then(res => {
+      if(res != null) {
+        this.quantity = res;
+      }
+    });
   }
 
   increaseCart(): void {
