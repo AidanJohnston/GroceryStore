@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart.service';
-import { Cart } from '../../models/cart.model';
 import { CartItem } from '../../models/cartItem.model';
 import { NgForm } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
@@ -31,7 +30,7 @@ export class CartComponent implements OnInit {
   }
 
   removeFromCart(cartItem:CartItem){
-    this.cartService.removeFromCart(cartItem.item.id);
+    this.cartService.removeFromCart(cartItem.item);
     this.setCart();
   }
 
@@ -42,7 +41,7 @@ export class CartComponent implements OnInit {
   }
 
   checkout(form : NgForm){
-    
+
     this.isLoading = true;
 
     const data = {

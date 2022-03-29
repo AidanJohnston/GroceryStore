@@ -58,7 +58,7 @@
                     Transaction
                 </mat-panel-title>
                 <mat-panel-description>
-                    ${{ trans.total }}
+                    {{ toDate(trans.time) }}
                 </mat-panel-description>
             </mat-expansion-panel-header>
             <h1>Address</h1>
@@ -73,6 +73,7 @@
                     {{item.item.name}} - {{item.item.price}}
                 </mat-list-item>
             </mat-list>
+            <h2>Total: ${{ trans.total }}</h2>
         </mat-expansion-panel>
     </mat-tab>
 </mat-tab-group>

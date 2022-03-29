@@ -51,6 +51,7 @@ import { CartComponent } from './pages/cart/cart.component';
 import { VerifyEmailGuard } from './guards/verify-email.guard';
 import { AuthLoggedinGuard } from './guards/auth-loggedin.guard';
 import { AuthNotloggedinGuard } from './guards/auth-notloggedin.guard';
+import { AddToCartComponent } from './components/add-to-cart/add-to-cart.component';
 
 
 
@@ -139,6 +140,7 @@ const routes: Routes = [
     AccountComponent,
     TransactionsComponent,
     CartComponent,
+    AddToCartComponent,
   ],
   imports: [
     BrowserModule,

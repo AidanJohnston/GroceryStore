@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Cart } from 'src/app/models/cart.model';
 import { CartItem } from 'src/app/models/cartItem.model';
 import { Item } from 'src/app/models/item.model';
 import { Transaction } from '../models/transaction.model';
@@ -29,8 +28,14 @@ export class CartService {
     this.items.push(new CartItem(item));
   }
 
-  removeFromCart(itemID : string): void{
-    // TODO
+  removeFromCart(item : Item): void{
+    let cartItem = this.items.find(value => value.item.id === item.id);
+    if(!cartItem) return;
+    if(cartItem.quantity > 1){
+      cartItem.quantity--;
+    } else {
+      this.items.splice(this.items.indexOf(cartItem), 1);
+    }
   }
 
   changeQuantity(itemID: string, quantity:number){
