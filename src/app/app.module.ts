@@ -78,7 +78,10 @@ const routes: Routes = [
 
       { 
         path: 'item', 
-        component: ItemComponent
+        children: [{
+          path: ':id',
+          component: ItemComponent,
+        }]
       },
       {
         path: 'account',
