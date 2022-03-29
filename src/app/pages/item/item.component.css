@@ -16,3 +16,16 @@
 .itemcontent {
     flex: 0 0 auto;
 }
+.example-card {
+    max-width: 300px;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    gap: 12px;
+}
