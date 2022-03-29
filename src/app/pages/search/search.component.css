@@ -38,10 +38,12 @@ div button:hover {
 .example-card {
     max-width: 300px;
     min-width: 300px;
+    max-height: 500px;
 }
 
 .flex-container {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
