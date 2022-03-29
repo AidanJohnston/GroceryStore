@@ -24,7 +24,7 @@ export class ItemComponent implements OnInit {
     if(this.route.snapshot.url[0] == null){
       this.router.navigate(['404']);
     }
-    this.itemService.getItem(this.route.snapshot.queryParamMap.get('id') || '').then(item => {
+    this.itemService.getItem(this.route.snapshot.url[0].toString()).then(item => {
       if(item != null) {
         this.item = item;
        }

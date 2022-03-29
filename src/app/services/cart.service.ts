@@ -18,30 +18,35 @@ export class CartService {
 
         return totalPrice;
     }
-  
-  addToCart(item: Item):void{
-    let cartItem = this.items.find(value => value.item.id === item.id);
+
+  getItemQuantity(item: Item): number {
+    let cartItem = this.items.find(value => value.item.name === item.name);
+
     if(cartItem){
-      this.changeQuantity(item.id, cartItem.quantity + 1);
-      return;
+      return cartItem.quantity;
     }
-    this.items.push(new CartItem(item));
+    else{
+      return 0;
+    }
+  }
+  
+  increaseCart(item: Item):void{
+    let cartItem = this.items.find(value => value.item.name === item.name);
+    if(!cartItem){
+      cartItem = new CartItem(item);
+      this.items.push(cartItem);
+    }
+    cartItem.quantity++;
   }
 
   removeFromCart(item : Item): void{
-    let cartItem = this.items.find(value => value.item.id === item.id);
+    let cartItem = this.items.find(value => value.item.name === item.name);
     if(!cartItem) return;
     if(cartItem.quantity > 1){
       cartItem.quantity--;
     } else {
       this.items.splice(this.items.indexOf(cartItem), 1);
     }
-  }
-
-  changeQuantity(itemID: string, quantity:number){
-    let cartItem = this.items.find(value => value.item.id === itemID);
-    if(!cartItem) return;
-    cartItem.quantity = quantity;
   }
 
   getCartItems():CartItem[]{
