@@ -21,10 +21,13 @@ export class AddToCartComponent implements OnInit {
 
   quantity: number = 0;
   item : Item = {} as Item;
+  id: string = '';
 
   ngOnInit(): void {
 
-    this.itemService.getItem(this.route.snapshot.url[0].toString()).then(item => {
+    this.id = this.route.snapshot.url[0].toString();
+
+    this.itemService.getItem(this.id).then(item => {
       if(item != null) {
         this.item = item;
        }
@@ -37,7 +40,7 @@ export class AddToCartComponent implements OnInit {
 
     if(this.authService.isUserLoggedIn) {
       this.quantity++;
-      this.cartService.increaseCart(this.item);
+      this.cartService.increaseCart(this.item, this.id);
     }
     else{
       this.router.navigate(['/login']);
@@ -49,7 +52,7 @@ export class AddToCartComponent implements OnInit {
     if(this.authService.isUserLoggedIn) {
       if(this.quantity > 0) {
         this.quantity--;
-        this.cartService.removeFromCart(this.item);
+        this.cartService.removeFromCart(this.item, this.id);
       }
     }
     else{

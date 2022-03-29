@@ -30,17 +30,19 @@ export class CartService {
     }
   }
   
-  increaseCart(item: Item):void{
-    let cartItem = this.items.find(value => value.item.name === item.name);
+  increaseCart(item: Item, id : string):void{
+    let cartItem = this.items.find(value => value.id === id);
     if(!cartItem){
-      cartItem = new CartItem(item);
+      cartItem = new CartItem(item, id);
       this.items.push(cartItem);
     }
     cartItem.quantity++;
+
+    console.log(this.items);
   }
 
-  removeFromCart(item : Item): void{
-    let cartItem = this.items.find(value => value.item.name === item.name);
+  removeFromCart(item : Item, id : string): void{
+    let cartItem = this.items.find(value => value.id === id);
     if(!cartItem) return;
     if(cartItem.quantity > 1){
       cartItem.quantity--;

@@ -33,7 +33,7 @@ export class CartComponent implements OnInit {
   }
 
   removeFromCart(cartItem:CartItem){
-    this.cartService.removeFromCart(cartItem.item);
+    this.cartService.removeFromCart(cartItem.item, cartItem.id);
     this.setCart();
   }
 
@@ -49,7 +49,9 @@ export class CartComponent implements OnInit {
         postalCode: form.value.postalCode
       }, 
       time: new Date().getTime(),
-      cart: this.cartItems,
+      cart: this.cartItems.map(item => {
+        return {item:item.item, quantity:  item.quantity};
+      }),
       total: this.total
     }
     

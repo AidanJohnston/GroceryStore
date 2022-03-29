@@ -70,7 +70,7 @@
             <h1>Items</h1>
             <mat-list>
                 <mat-list-item *ngFor="let item of trans.cart">
-                    {{item.item.name}} - {{item.item.price}}
+                    {{item.item.name}} ${{item.item.price}}x{{item.quantity}}
                 </mat-list-item>
             </mat-list>
             <h2>Total: ${{ trans.total }}</h2>
