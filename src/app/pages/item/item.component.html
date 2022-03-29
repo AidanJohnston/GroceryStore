@@ -1,7 +1,7 @@
 
 <mat-card class="example-card">
     <mat-card-header>
-        <mat-card-title><a mat-button [routerLink]="['/item', item.id]">{{ item.name }}</a></mat-card-title>
+        <mat-card-title><a [routerLink]="null">{{ item.name }}</a></mat-card-title>
         <mat-card-subtitle><app-add-to-cart></app-add-to-cart></mat-card-subtitle>
     </mat-card-header>
     <img mat-card-image src="{{item.photo_ref}}">
