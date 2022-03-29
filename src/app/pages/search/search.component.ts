@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Item } from 'src/app/models/item.model';
+import { ItemsService } from 'src/app/services/items.service';
 
 @Component({
   selector: 'app-search',
@@ -8,19 +10,25 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class SearchComponent implements OnInit {
 
-  searchTerm: String = "";
-  constructor(private route: ActivatedRoute, private router:Router) { }
+  constructor(
+    private router : Router,
+    private itemService : ItemsService) { }
+
+  allItems : Item[] = [];
+  displayItems : Item[] = [];
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      if (params['searchTerm'])
-        this.searchTerm = params['searchTerm'];
-    })
+    this.itemService.getAllItems().then(items => {
+      this.allItems = items;
+      this.displayItems = items;
+    });
   }
 
-  search():void{
-    if(this.searchTerm)
-    this.router.navigateByUrl('/search/' + this.searchTerm);
+  search(query : string):void{
+    console.log(query);
+    this.displayItems = this.allItems.filter(item => {
+      return item.name.toLowerCase().includes(query.toLowerCase());
+    });
   }
 }
   

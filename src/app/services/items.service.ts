@@ -49,10 +49,23 @@ export class ItemsService {
     return true;
   }
 
-  /*
-  public async searchItem(name : string) : Promise<Array<Item>> {
+  async getAllItems() : Promise<Item[]> {
+    const data = JSON.parse(localStorage.getItem('items') || '{}');
 
-    
+    let items : Item[] = []
+
+    for(var i in data){
+
+      const item = {
+        id: i,
+        name: data[i].name,
+        price: data[i].price,
+        discription: data[i].discription,
+        photo_ref: data[i].photo_ref,
+        tags: data[i].tags
+      }
+      items.push(item)
+    }
+    return items;
   }
-  */
 }
