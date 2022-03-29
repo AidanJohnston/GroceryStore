@@ -18,6 +18,10 @@
 }
 .example-card {
     max-width: 300px;
+    display: block;
+    margin-left:auto;
+    margin-right:auto;  
+    vertical-align:middle;
 }
 
 .flex-container {
@@ -28,4 +32,5 @@
     align-items: center;
     list-style: none;
     gap: 12px;
+    
 }
