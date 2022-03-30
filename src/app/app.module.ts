@@ -24,6 +24,8 @@ import {MatTableModule} from '@angular/material/table';
 // FIREBASE
 import { AngularFireModule } from "@angular/fire/compat";
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+
+// ENVIRONMENT
 import { environment } from 'src/environments/environment';
 
 // SERVICES
@@ -146,9 +148,9 @@ const routes: Routes = [
     AddToCartComponent,
   ],
   imports: [
-    BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    BrowserModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatIconModule,
