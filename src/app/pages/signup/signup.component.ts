@@ -52,15 +52,13 @@ export class SignupComponent {
   ]
 
   onPasswordChange(password: string) {
-    this.checkPasswordStrength(password).then(num => {
-      this.text = this.passwordStrengths[num]['text'];
-      this.color = this.passwordStrengths[num]['color'];
-      this.value = this.passwordStrengths[num]['value'];
-    });
+    const num : number = this.checkPasswordStrength(password);
+    this.text = this.passwordStrengths[num]['text'];
+    this.color = this.passwordStrengths[num]['color'];
+    this.value = this.passwordStrengths[num]['value'];
   }
 
-  public async checkPasswordStrength(password : string) : Promise<number> {
-
+  public checkPasswordStrength(password : string) : number {
 
     let hasLower = new RegExp('(?=.*[a-z])');
     let hasUpper = new RegExp('(?=.*[A-Z])');
