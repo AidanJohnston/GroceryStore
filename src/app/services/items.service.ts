@@ -1,8 +1,6 @@
-import { StringMap } from '@angular/compiler/src/compiler_facade_interface';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
-import { map } from '@firebase/util';
 import { Item } from '../models/item.model';
 
 @Injectable({
