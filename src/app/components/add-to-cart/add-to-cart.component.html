@@ -1,5 +1,5 @@
 <div class="addToCart">
-    <button mat-button (click)="decreaseCart()" [disabled]="quantity == 0"><span class="material-icons">
+    <button #remove mat-button (click)="decreaseCart()" [disabled]="quantity == 0"><span class="material-icons">
         remove_circle_outline
         </span></button>
     <a mat-button [disabled]>{{quantity}}</a>

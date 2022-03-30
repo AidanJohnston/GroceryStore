@@ -19,13 +19,13 @@ export class AddToCartComponent implements OnInit {
     private authService : AuthService,
     private router : Router) { }
 
-  quantity: number = 0;
+  public quantity: number = 0;
   item : Item = {} as Item;
   id: string = '';
 
   ngOnInit(): void {
 
-    this.id = this.route.snapshot.url[0].toString();
+    this.id = '' + this.route.snapshot.url[0].toString();
 
     this.itemService.getItem(this.id).then(item => {
       if(item != null) {
