@@ -121,11 +121,6 @@ const routes: Routes = [
   { path: '**', 
     component: PagenotfoundComponent
   },
-  {
-    path: 'cart',
-    component: CartComponent,
-    canActivate: [AuthNotloggedinGuard]
-  }
 ]
 
 @NgModule({
